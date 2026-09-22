@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATIKA GENAP - Media Belajar Matematika</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:28px 15px;text-align:center}
+header h1{margin:0 0 8px;font-size:30px}
+header p{margin:5px 0}
+.container{max-width:900px;margin:auto;padding:20px 15px 40px}
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:18px}
+.topic{background:#eef4ff;border:2px solid #dbe7ff;border-radius:14px;padding:20px 12px;text-align:center;cursor:pointer;transition:.2s}
+.topic:hover{transform:translateY(-3px);background:#e0ebff;box-shadow:0 6px 16px rgba(37,99,235,.15)}
+.topic .icon{font-size:36px;display:block;margin-bottom:8px}
+.topic .kelas-tag{display:inline-block;background:#2563eb;color:white;font-size:11px;padding:2px 8px;border-radius:10px;margin-top:6px}
+h2{color:#2563eb;margin-top:0}
+h3{color:#1d4ed8}
+.math{background:#f8fafc;border-left:5px solid #2563eb;padding:14px;margin:12px 0;border-radius:8px;font-size:18px;line-height:1.7;overflow-x:auto}
+.info{background:#eff6ff;border-left:5px solid #3b82f6;padding:14px;border-radius:8px;margin:12px 0}
+.success{background:#ecfdf5;border-left:5px solid #10b981;padding:14px;border-radius:8px;margin:12px 0}
+.warning{background:#fffbeb;border-left:5px solid #f59e0b;padding:14px;border-radius:8px;margin:12px 0}
+.step{display:flex;gap:12px;margin:10px 0;align-items:flex-start}
+.step-number{min-width:32px;height:32px;border-radius:50%;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold}
+button{border:0;border-radius:10px;padding:12px 18px;background:#2563eb;color:white;cursor:pointer;font-size:15px;margin:5px 3px}
+button:hover{background:#1d4ed8}
+button.secondary{background:#64748b}
+button.success-btn{background:#059669}
+input,select{width:100%;padding:12px;margin:6px 0 14px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px}
+.question{border:1px solid #e2e8f0;border-radius:12px;padding:18px;margin:15px 0}
+.option{display:block;width:100%;text-align:left;background:#f8fafc;color:#172033;border:1px solid #cbd5e1;margin:8px 0;padding:12px 14px}
+.option:hover{background:#e2e8f0}
+.option.correct{background:#dcfce7;border-color:#16a34a;color:#166534;font-weight:bold}
+.option.wrong{background:#fee2e2;border-color:#dc2626;color:#991b1b}
+.feedback{padding:10px;border-radius:8px;margin-top:10px}
+.progress-wrap{background:#e2e8f0;border-radius:20px;height:12px;overflow:hidden;margin:12px 0}
+.progress{height:100%;background:#2563eb;width:0%;transition:.3s}
+.timer{position:sticky;top:5px;z-index:5;background:#fff7ed;color:#c2410c;border:2px solid #fdba74;padding:12px;border-radius:10px;text-align:center;font-weight:bold;font-size:20px;margin-bottom:15px}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#dbeafe;color:#1d4ed8;font-size:13px;margin:3px}
+.hidden{display:none}
+.center{text-align:center}
+.footer{text-align:center;color:#64748b;font-size:13px;margin-top:30px}
+hr{border:0;border-top:1px solid #e2e8f0;margin:25px 0}
+.kelas-section{margin:25px 0 10px;font-size:18px;font-weight:bold;color:#1e40af}
+@media(max-width:600px){header h1{font-size:24px}.card{padding:15px}.math{font-size:16px}button{width:100%;margin:5px 0}}
+</style>
+</head>
+<body>
+<header>
+<h1>📘 MATIKA GENAP</h1>
+<p>Media Belajar Matematika Semester Genap</p>
+<p><strong>Hendra Sudrajat, S.Pd.</strong></p>
+<p>SMP Negeri 3 Sindangkerta</p>
+<p>Kelas 7 &amp; 8 • Kurikulum Merdeka 2026/2027</p>
+</header>
+
+<div class="container">
+<!-- ================= BERANDA ================= -->
+<section id="home" class="page">
+<div class="card">
+<h2>Selamat Datang di MATIKA GENAP 👋</h2>
+<p>Website pembelajaran Matematika Semester Genap sesuai ATP Kurikulum Merdeka 2026/2027 untuk Kelas 7 dan Kelas 8.</p>
+
+<div class="kelas-section">📗 Kelas 7 (Semester 2)</div>
+<div class="topic-grid">
+<div class="topic" onclick="buka('garis-sudut')">
+<span class="icon">∠</span>
+<strong>Garis dan Sudut</strong>
+<p>Hubungan antar sudut</p>
+<span class="kelas-tag">Kelas 7</span>
+</div>
+<div class="topic" onclick="buka('kesebangunan')">
+<span class="icon">🔺</span>
+<strong>Kesebangunan</strong>
+<p>Bangun sebangun</p>
+<span class="kelas-tag">Kelas 7</span>
+</div>
+<div class="topic" onclick="buka('penyajian-data')">
+<span class="icon">📊</span>
+<strong>Penyajian Data</strong>
+<p>Diagram &amp; interpretasi</p>
+<span class="kelas-tag">Kelas 7</span>
+</div>
+</div>
+
+<div class="kelas-section">📘 Kelas 8 (Semester 2)</div>
+<div class="topic-grid">
+<div class="topic" onclick="buka('relasi')">
+<span class="icon">🔗</span>
+<strong>Relasi &amp; Fungsi</strong>
+<p>Domain, kodomain, range</p>
+<span class="kelas-tag">Kelas 8</span>
+</div>
+<div class="topic" onclick="buka('garis')">
+<span class="icon">📈</span>
+<strong>Persamaan Garis Lurus</strong>
+<p>Gradien &amp; grafik</p>
+<span class="kelas-tag">Kelas 8</span>
+</div>
+<div class="topic" onclick="buka('pemusatan')">
+<span class="icon">📉</span>
+<strong>Ukuran Pemusatan Data</strong>
+<p>Mean, median, modus, jangkauan</p>
+<span class="kelas-tag">Kelas 8</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>📚 Cara Menggunakan</h3>
+<div class="step"><div class="step-number">1</div><div>Pilih materi sesuai kelas.</div></div>
+<div class="step"><div class="step-number">2</div><div>Baca materi dan contoh soal.</div></div>
+<div class="step"><div class="step-number">3</div><div>Kerjakan latihan (tidak dibatasi waktu).</div></div>
+<div class="step"><div class="step-number">4</div><div>Kerjakan Tes Kemampuan (20 soal, 40 menit).</div></div>
+<div class="info"><strong>Catatan:</strong> Latihan bisa diulang. Tes memiliki timer. Hasil bisa dikirim ke Google Sheets (atur URL di script).</div>
+</div>
+</section>
+
+<!-- ================= GARIS DAN SUDUT ================= -->
+<section id="garis-sudut" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>∠ Garis dan Sudut</h2>
+<div class="info">Materi ini membahas hubungan antar sudut yang terbentuk oleh dua garis berpotongan dan dua garis sejajar yang dipotong garis transversal.</div>
+
+<h3>1. Sudut dari Dua Garis Berpotongan</h3>
+<ul>
+<li><strong>Sudut berhadapan</strong> (vertikal) → besarnya sama</li>
+<li><strong>Sudut bersebelahan</strong> → jumlahnya 180° (saling berpelurus)</li>
+</ul>
+<div class="math">Jika dua garis berpotongan, sudut yang berhadapan sama besar.</div>
+
+<h3>2. Dua Garis Sejajar Dipotong Transversal</h3>
+<p>Ketika dua garis sejajar dipotong oleh garis lain (transversal), terbentuk beberapa pasangan sudut:</p>
+<ul>
+<li><strong>Sudut sehadap</strong> (corresponding) → sama besar</li>
+<li><strong>Sudut berseberangan</strong> (alternate) → sama besar</li>
+<li><strong>Sudut sepihak</strong> (co-interior) → jumlah 180°</li>
+</ul>
+
+<h3>3. Jenis-Jenis Sudut</h3>
+<ul>
+<li><strong>Sudut siku-siku</strong> = 90°</li>
+<li><strong>Sudut pelurus</strong> = 180°</li>
+<li><strong>Sudut penyiku</strong> → dua sudut yang jumlahnya 90°</li>
+<li><strong>Sudut berpelurus</strong> → dua sudut yang jumlahnya 180°</li>
+</ul>
+
+<h3>4. Jumlah Sudut dalam Segitiga</h3>
+<div class="math">Jumlah ketiga sudut dalam segitiga = 180°</div>
+<p>Contoh: Jika dua sudut 50° dan 60°, maka sudut ketiga = 180° − 50° − 60° = 70°.</p>
+
+<div class="success"><strong>Tips:</strong> Gambar selalu membantu. Tandai sudut yang diketahui dan cari hubungan sehadap / berseberangan / pelurus.</div>
+
+<hr>
+<h3>🎯 Latihan Garis dan Sudut</h3>
+<button onclick="mulaiLatihan('garisSudut')">🎯 Mulai Latihan</button>
+<button onclick="bukaFormTes('Garis dan Sudut',bankTesGarisSudut)">📝 Tes Kemampuan</button>
+<div id="latihan-garisSudut"></div>
+</div>
+</section>
+
+<!-- ================= KESEBANGUNAN ================= -->
+<section id="kesebangunan" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>🔺 Kesebangunan</h2>
+<div class="info">Dua bangun dikatakan sebangun jika bentuknya sama (meski ukurannya berbeda). Syarat: sudut-sudut bersesuaian sama besar dan sisi-sisi bersesuaian berbanding senilai.</div>
+
+<h3>1. Syarat Dua Bangun Sebangun</h3>
+<ol>
+<li>Sudut-sudut yang bersesuaian sama besar</li>
+<li>Sisi-sisi yang bersesuaian berbanding senilai (proporsional)</li>
+</ol>
+
+<h3>2. Kesebangunan pada Segitiga</h3>
+<ul>
+<li><strong>AAA</strong> : ketiga sudut sama</li>
+<li><strong>SSS</strong> : ketiga sisi berbanding senilai</li>
+<li><strong>SAS</strong> : dua sisi berbanding senilai dan sudut di antaranya sama</li>
+</ul>
+<div class="math">Jika ΔABC ∼ ΔDEF maka:<br>∠A = ∠D, ∠B = ∠E, ∠C = ∠F<br>dan AB/DE = BC/EF = AC/DF</div>
+
+<h3>3. Skala</h3>
+<div class="math">Skala = ukuran pada gambar : ukuran sebenarnya</div>
+<p>Contoh: Skala 1 : 100 berarti 1 cm pada gambar = 100 cm sebenarnya.</p>
+
+<div class="warning"><strong>Ingat!</strong> Perbandingan sisi harus sesuai dengan sudut yang bersesuaian.</div>
+
+<hr>
+<h3>🎯 Latihan Kesebangunan</h3>
+<button onclick="mulaiLatihan('kesebangunan')">🎯 Mulai Latihan</button>
+<button onclick="bukaFormTes('Kesebangunan',bankTesKesebangunan)">📝 Tes Kemampuan</button>
+<div id="latihan-kesebangunan"></div>
+</div>
+</section>
+
+<!-- ================= PENYAJIAN DATA ================= -->
+<section id="penyajian-data" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>📊 Penyajian Data</h2>
+<div class="info">Peserta didik belajar melakukan investigasi, mengumpulkan, mengolah, menginterpretasi dan menganalisis data serta menentukan grafik yang sesuai.</div>
+
+<h3>1. Jenis Data</h3>
+<ul>
+<li><strong>Data tunggal</strong> : data yang belum dikelompokkan</li>
+<li><strong>Data berkelompok</strong> : data yang sudah disusun dalam interval</li>
+</ul>
+
+<h3>2. Diagram Batang</h3>
+<p>Menggunakan batang untuk menunjukkan frekuensi. Cocok untuk data kategori atau diskrit.</p>
+
+<h3>3. Diagram Garis</h3>
+<p>Menghubungkan titik-titik data. Cocok untuk menunjukkan perubahan data dari waktu ke waktu.</p>
+
+<h3>4. Diagram Lingkaran (Pie Chart)</h3>
+<p>Menunjukkan proporsi dalam bentuk bagian lingkaran.</p>
+<div class="math">Sudut sektor = (frekuensi / total data) × 360°</div>
+
+<h3>5. Membaca dan Menafsirkan Data</h3>
+<p>Dari diagram kita dapat menentukan nilai tertinggi/terendah, perbandingan, dan tren.</p>
+
+<div class="success"><strong>Tips:</strong> Selalu perhatikan judul, sumbu, legenda, dan satuan pada diagram.</div>
+
+<hr>
+<h3>🎯 Latihan Penyajian Data</h3>
+<button onclick="mulaiLatihan('penyajianData')">🎯 Mulai Latihan</button>
+<button onclick="bukaFormTes('Penyajian Data',bankTesPenyajianData)">📝 Tes Kemampuan</button>
+<div id="latihan-penyajianData"></div>
+</div>
+</section>
+
+<!-- ================= RELASI & FUNGSI ================= -->
+<section id="relasi" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>🔗 Relasi dan Fungsi</h2>
+<div class="info">Relasi adalah hubungan antara dua himpunan. Fungsi adalah relasi khusus yang memasangkan setiap anggota domain dengan tepat satu anggota kodomain.</div>
+
+<h3>1. Relasi</h3>
+<p>Cara menyajikan relasi: diagram panah, himpunan pasangan berurutan, dan diagram Cartesius.</p>
+
+<h3>2. Fungsi</h3>
+<div class="math">f : A → B &nbsp; atau &nbsp; y = f(x)</div>
+<p>Setiap anggota domain dipasangkan dengan tepat satu anggota kodomain.</p>
+
+<h3>3. Domain, Kodomain, dan Range</h3>
+<ul>
+<li><strong>Domain</strong> : himpunan asal (semua nilai x)</li>
+<li><strong>Kodomain</strong> : himpunan hasil yang mungkin</li>
+<li><strong>Range</strong> : himpunan hasil yang benar-benar muncul</li>
+</ul>
+
+<h3>4. Contoh</h3>
+<div class="math">f(x) = 2x + 1<br>Jika x = 3 maka f(3) = 7</div>
+
+<div class="success"><strong>Tips:</strong> Jika ada satu x yang punya dua y, maka itu <strong>bukan</strong> fungsi.</div>
+
+<hr>
+<h3>🎯 Latihan Relasi &amp; Fungsi</h3>
+<button onclick="mulaiLatihan('relasi')">🎯 Mulai Latihan</button>
+<button onclick="bukaFormTes('Relasi dan Fungsi',bankTesRelasi)">📝 Tes Kemampuan</button>
+<div id="latihan-relasi"></div>
+</div>
+</section>
+
+<!-- ================= PERSAMAAN GARIS LURUS ================= -->
+<section id="garis" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>📈 Persamaan Garis Lurus</h2>
+<div class="info">Persamaan garis lurus menyatakan hubungan linear antara x dan y. Bentuk umum: y = mx + c atau ax + by + c = 0.</div>
+
+<h3>1. Bentuk Umum</h3>
+<div class="math">y = mx + c</div>
+<ul>
+<li>m = gradien (kemiringan)</li>
+<li>c = titik potong sumbu-y</li>
+</ul>
+
+<h3>2. Gradien</h3>
+<div class="math">m = (y₂ − y₁) / (x₂ − x₁)</div>
+
+<h3>3. Menentukan Persamaan Garis</h3>
+<p>Jika diketahui gradien m dan melalui titik (x₁, y₁):</p>
+<div class="math">y − y₁ = m(x − x₁)</div>
+
+<h3>4. Sifat Gradien</h3>
+<ul>
+<li>Dua garis sejajar → m₁ = m₂</li>
+<li>Dua garis tegak lurus → m₁ × m₂ = −1</li>
+</ul>
+
+<div class="warning"><strong>Catatan:</strong> Garis horizontal m = 0. Garis vertikal gradiennya tak terdefinisi.</div>
+
+<hr>
+<h3>🎯 Latihan Persamaan Garis Lurus</h3>
+<button onclick="mulaiLatihan('garis')">🎯 Mulai Latihan</button>
+<button onclick="bukaFormTes('Persamaan Garis Lurus',bankTesGaris)">📝 Tes Kemampuan</button>
+<div id="latihan-garis"></div>
+</div>
+</section>
+
+<!-- ================= UKURAN PEMUSATAN DATA ================= -->
+<section id="pemusatan" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>📉 Ukuran Pemusatan Data</h2>
+<div class="info">Ukuran pemusatan data meliputi mean (rata-rata), median, modus, dan jangkauan (range). Digunakan untuk menafsirkan dan membandingkan data.</div>
+
+<h3>1. Mean (Rata-rata)</h3>
+<div class="math">Mean = Jumlah semua data ÷ Banyak data</div>
+
+<h3>2. Median</h3>
+<p>Nilai tengah setelah data diurutkan.</p>
+<ul>
+<li>Banyak data ganjil → data ke-(n+1)/2</li>
+<li>Banyak data genap → rata-rata data ke-n/2 dan ke-(n/2)+1</li>
+</ul>
+
+<h3>3. Modus</h3>
+<p>Data yang paling sering muncul.</p>
+
+<h3>4. Jangkauan (Range)</h3>
+<div class="math">Jangkauan = Data terbesar − Data terkecil</div>
+
+<div class="success"><strong>Tips:</strong> Selalu urutkan data terlebih dahulu sebelum mencari median dan modus.</div>
+
+<hr>
+<h3>🎯 Latihan Ukuran Pemusatan Data</h3>
+<button onclick="mulaiLatihan('pemusatan')">🎯 Mulai Latihan</button>
+<button onclick="bukaFormTes('Ukuran Pemusatan Data',bankTesPemusatan)">📝 Tes Kemampuan</button>
+<div id="latihan-pemusatan"></div>
+</div>
+</section>
+
+<!-- ================= FORM TES ================= -->
+<section id="formTes" class="page hidden">
+<div class="card">
+<button class="secondary" onclick="home()">← Kembali</button>
+<h2>📝 Data Peserta Tes</h2>
+<div class="info">Materi Tes: <strong id="materiForm"></strong><br><br><strong>20 soal • 40 menit</strong><br>5 mudah • 10 sedang • 5 sulit</div>
+<label>Nama Lengkap</label>
+<input type="text" id="namaSiswa" placeholder="Masukkan nama lengkap">
+<label>Kelas</label>
+<select id="kelasSiswa">
+<option value="">-- Pilih Kelas --</option>
+<option value="7A">7A</option><option value="7B">7B</option><option value="7C">7C</option><option value="7D">7D</option>
+<option value="8A">8A</option><option value="8B">8B</option><option value="8C">8C</option><option value="8D">8D</option>
+</select>
+<button onclick="mulaiTes()">🚀 Mulai Tes</button>
+</div>
+</section>
+
+<!-- ================= HALAMAN TES ================= -->
+<section id="halamanTes" class="page hidden">
+<div class="card">
+<div class="timer" id="timer">⏱️ 40:00</div>
+<h2 id="judulTes">Tes Kemampuan</h2>
+<div class="info"><span id="infoTes"></span></div>
+<div class="progress-wrap"><div class="progress" id="progressTes"></div></div>
+<div id="soalTesContainer"></div>
+<div class="center">
+<button onclick="soalSebelumnya()">← Sebelumnya</button>
+<button onclick="soalBerikutnya()">Soal Berikutnya →</button>
+<button class="success-btn" onclick="selesaiTes()">✅ Selesai Tes</button>
+</div>
+</div>
+</section>
+
+<!-- ================= HASIL ================= -->
+<section id="hasilTes" class="page hidden">
+<div class="card center">
+<h2>🎉 Hasil Tes</h2>
+<div id="hasilIsi"></div>
+<button onclick="home()">🏠 Kembali ke Beranda</button>
+</div>
+</section>
+
+<div class="footer">
+MATIKA GENAP • Hendra Sudrajat, S.Pd.<br>
+SMP Negeri 3 Sindangkerta • Kurikulum Merdeka 2026/2027
+</div>
+</div>
+
+<script>
+const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbw9rwAPmIswQ0jxF9AO7AEsECdY3Cn9EBThaQNlxVqS_QNhOB2rhRJzBuhFpdMZeiox/exec";
+
+const halaman = ["home","garis-sudut","kesebangunan","penyajian-data","relasi","garis","pemusatan","formTes","halamanTes","hasilTes"];
+function sembunyikanSemua(){ halaman.forEach(id => { const el = document.getElementById(id); if(el) el.classList.add("hidden"); }); }
+function buka(id){ sembunyikanSemua(); const el = document.getElementById(id); if(el) el.classList.remove("hidden"); window.scrollTo(0,0); }
+function home(){ buka("home"); }
+
+function acak(array){ return [...array].sort(() => Math.random() - 0.5); }
+function ambilAcak(array, jumlah){ return acak(array).slice(0, jumlah); }
+
+/* ================= BANK LATIHAN ================= */
+const bankLatihan = {
+  garisSudut: [
+    {q:"Jumlah sudut dalam segitiga adalah ...", o:["90°","180°","270°","360°"], a:1},
+    {q:"Sudut yang berhadapan pada dua garis berpotongan ...", o:["Jumlah 180°","Sama besar","Jumlah 90°","Berbeda"], a:1},
+    {q:"Dua sudut yang jumlahnya 180° disebut sudut ...", o:["Siku-siku","Pelurus","Penyiku","Sehadap"], a:1},
+    {q:"Sudut sehadap pada garis sejajar yang dipotong transversal ...", o:["Sama besar","Jumlah 180°","Jumlah 90°","Berbeda"], a:0},
+    {q:"Jika dua sudut sebuah segitiga 40° dan 70°, sudut ketiga = ...", o:["50°","60°","70°","80°"], a:2},
+    {q:"Sudut yang jumlahnya 90° disebut sudut ...", o:["Pelurus","Penyiku","Sehadap","Berseberangan"], a:1},
+    {q:"Sudut berseberangan pada garis sejajar ...", o:["Sama besar","Jumlah 180°","Jumlah 90°","Tidak ada hubungan"], a:0},
+    {q:"Sudut siku-siku besarnya ...", o:["45°","60°","90°","180°"], a:2},
+    {q:"Jika sudut A = 55° dan berpelurus dengan sudut B, maka B = ...", o:["35°","55°","125°","145°"], a:2},
+    {q:"Garis yang memotong dua garis sejajar disebut ...", o:["Transversal","Vertikal","Horizontal","Diagonal"], a:0}
+  ],
+  kesebangunan: [
+    {q:"Dua bangun sebangun jika ...", o:["Ukurannya sama","Bentuknya sama","Warnanya sama","Luasnya sama"], a:1},
+    {q:"Syarat sebangun yang benar adalah ...", o:["Sudut sama & sisi proporsional","Hanya sudut sama","Hanya sisi sama","Luas sama"], a:0},
+    {q:"Jika ΔABC ∼ ΔDEF maka sudut A sama dengan sudut ...", o:["D","E","F","B"], a:0},
+    {q:"Skala 1 : 50 berarti 1 cm gambar = ... cm sebenarnya", o:["1","5","50","100"], a:2},
+    {q:"Simbol kesebangunan adalah ...", o:["=","∼","≈","≡"], a:1},
+    {q:"Jika dua sudut suatu segitiga sama dengan dua sudut segitiga lain, maka ...", o:["Sama luas","Sebangun","Kongruen","Tidak ada hubungan"], a:1},
+    {q:"Sisi yang berhadapan dengan sudut yang sama disebut sisi ...", o:["Sejenis","Bersesuaian","Miring","Tegak"], a:1},
+    {q:"Skala 1 : 100, panjang gambar 3 cm. Panjang sebenarnya ...", o:["3 cm","30 cm","300 cm","3000 cm"], a:2},
+    {q:"Perbandingan sisi pada segitiga sebangun disebut ...", o:["Skala","Rasio","Proporsi","Semua benar"], a:3},
+    {q:"Segitiga yang memiliki ketiga sudut sama pasti ...", o:["Sama sisi","Sebangun dengan segitiga lain yang sudutnya sama","Sama kaki","Siku-siku"], a:1}
+  ],
+  penyajianData: [
+    {q:"Diagram yang cocok untuk menunjukkan perubahan data dari waktu ke waktu adalah ...", o:["Batang","Garis","Lingkaran","Piktogram"], a:1},
+    {q:"Diagram lingkaran menunjukkan ...", o:["Perubahan waktu","Proporsi","Frekuensi mutlak","Urutan data"], a:1},
+    {q:"Sudut sektor = (frekuensi/total) × ...", o:["100","180","360","90"], a:2},
+    {q:"Data yang paling sering muncul disebut ...", o:["Mean","Median","Modus","Jangkauan"], a:2},
+    {q:"Diagram batang cocok untuk data ...", o:["Kontinu saja","Kategori/diskrit","Hanya persentase","Waktu saja"], a:1},
+    {q:"Jika total data 40 dan frekuensi suatu kategori 10, sudut sektornya ...", o:["45°","90°","180°","36°"], a:1},
+    {q:"Data yang belum dikelompokkan disebut data ...", o:["Tunggal","Kelompok","Kontinu","Diskrit"], a:0},
+    {q:"Untuk membandingkan proporsi, diagram terbaik adalah ...", o:["Garis","Batang","Lingkaran","Dot plot"], a:2},
+    {q:"Judul diagram penting karena ...", o:["Mempercantik","Memberi informasi isi data","Tidak penting","Hanya formalitas"], a:1},
+    {q:"Sumbu pada diagram batang biasanya menunjukkan ...", o:["Warna","Frekuensi & kategori","Hanya nama","Skala peta"], a:1}
+  ],
+  relasi: [
+    {q:"Relasi yang memasangkan setiap anggota domain dengan tepat satu anggota kodomain disebut ...", o:["Relasi","Fungsi","Himpunan","Diagram"], a:1},
+    {q:"Himpunan asal pada fungsi disebut ...", o:["Range","Kodomain","Domain","Pasangan"], a:2},
+    {q:"f(x) = 2x + 1. Nilai f(3) = ...", o:["5","6","7","8"], a:2},
+    {q:"Jika ada satu x yang memiliki dua y, maka relasi tersebut ...", o:["Fungsi","Bukan fungsi","Domain","Range"], a:1},
+    {q:"Cara menyajikan relasi antara lain ...", o:["Diagram panah","Himpunan pasangan","Diagram Cartesius","Semua benar"], a:3},
+    {q:"Range adalah ...", o:["Himpunan asal","Himpunan hasil yang muncul","Himpunan semua bilangan","Kodomain saja"], a:1},
+    {q:"f(x) = x − 4. f(10) = ...", o:["6","14","4","−6"], a:0},
+    {q:"Notasi fungsi f : A → B berarti ...", o:["A adalah range","Domain A, kodomain B","B adalah domain","Tidak ada arti"], a:1},
+    {q:"Pasangan (2,5) dan (2,7) menunjukkan ...", o:["Fungsi","Bukan fungsi","Domain 5 dan 7","Range 2"], a:1},
+    {q:"Nilai yang menjadi hasil fungsi disebut ...", o:["Domain","Input","Output / range","Variabel"], a:2}
+  ],
+  garis: [
+    {q:"Bentuk umum persamaan garis lurus adalah ...", o:["y = mx + c","y = x² + c","x = my + c","y = m/x"], a:0},
+    {q:"m pada y = mx + c disebut ...", o:["Konstanta","Gradien","Titik potong","Sumbu"], a:1},
+    {q:"Gradien garis yang melalui (1,2) dan (3,6) adalah ...", o:["1","2","3","4"], a:1},
+    {q:"Titik potong sumbu-y dari y = 3x + 5 adalah ...", o:["(0,3)","(0,5)","(5,0)","(3,0)"], a:1},
+    {q:"Dua garis sejajar memiliki gradien yang ...", o:["Berbeda","Sama","Saling negatif","Nol"], a:1},
+    {q:"Jika m₁ × m₂ = −1 maka kedua garis ...", o:["Sejajar","Berimpit","Tegak lurus","Berpotongan sembarang"], a:2},
+    {q:"Gradien garis horizontal adalah ...", o:["1","0","Tak terdefinisi","−1"], a:1},
+    {q:"Persamaan garis dengan gradien 2 dan melalui (0,3) adalah ...", o:["y = 2x + 3","y = 3x + 2","y = 2x − 3","y = x + 2"], a:0},
+    {q:"Garis vertikal memiliki gradien ...", o:["0","1","Tak terdefinisi","−1"], a:2},
+    {q:"Rumus gradien dari dua titik adalah ...", o:["(y₂−y₁)/(x₂−x₁)","(x₂−x₁)/(y₂−y₁)","y₂/x₂","x₂/y₂"], a:0}
+  ],
+  pemusatan: [
+    {q:"Rata-rata disebut juga ...", o:["Median","Modus","Mean","Jangkauan"], a:2},
+    {q:"Data yang paling sering muncul disebut ...", o:["Mean","Median","Modus","Kuartil"], a:2},
+    {q:"Nilai tengah setelah data diurutkan disebut ...", o:["Mean","Median","Modus","Range"], a:1},
+    {q:"Jangkauan = ...", o:["Data terbesar + terkecil","Data terbesar − terkecil","Mean − median","Q3 − Q1"], a:1},
+    {q:"Data: 2, 3, 3, 5, 7. Mediannya adalah ...", o:["2","3","5","7"], a:1},
+    {q:"Data: 4, 5, 5, 6, 8, 9. Modusnya adalah ...", o:["4","5","6","9"], a:1},
+    {q:"Q2 sama dengan ...", o:["Mean","Modus","Median","Jangkauan"], a:2},
+    {q:"Data: 1, 3, 5, 7, 9. Mean = ...", o:["4","5","6","7"], a:1},
+    {q:"Banyak data 9 (ganjil). Median terletak pada data ke- ...", o:["4","5","6","9"], a:1},
+    {q:"Data harus diurutkan terlebih dahulu sebelum mencari ...", o:["Mean saja","Median dan modus","Hanya modus","Tidak perlu"], a:1}
+  ]
+};
+
+/* ================= BANK TES ================= */
+const bankTesGarisSudut = [
+  {q:"Jumlah sudut dalam segitiga adalah ...", o:["90°","180°","270°","360°"], a:1, d:"mudah"},
+  {q:"Sudut siku-siku besarnya ...", o:["45°","60°","90°","180°"], a:2, d:"mudah"},
+  {q:"Sudut yang berhadapan pada dua garis berpotongan ...", o:["Sama besar","Jumlah 180°","Jumlah 90°","Berbeda"], a:0, d:"mudah"},
+  {q:"Dua sudut yang jumlahnya 180° disebut ...", o:["Siku-siku","Pelurus","Penyiku","Sehadap"], a:1, d:"mudah"},
+  {q:"Garis yang memotong dua garis sejajar disebut ...", o:["Transversal","Vertikal","Horizontal","Diagonal"], a:0, d:"mudah"},
+  {q:"Jika dua sudut segitiga 50° dan 60°, sudut ketiga = ...", o:["50°","60°","70°","80°"], a:2, d:"sedang"},
+  {q:"Sudut sehadap pada garis sejajar yang dipotong transversal ...", o:["Sama besar","Jumlah 180°","Jumlah 90°","Berbeda"], a:0, d:"sedang"},
+  {q:"Sudut berseberangan pada garis sejajar ...", o:["Sama besar","Jumlah 180°","Jumlah 90°","Tidak ada hubungan"], a:0, d:"sedang"},
+  {q:"Jika sudut A = 65° dan berpelurus dengan B, maka B = ...", o:["25°","65°","115°","125°"], a:2, d:"sedang"},
+  {q:"Sudut yang jumlahnya 90° disebut ...", o:["Pelurus","Penyiku","Sehadap","Berseberangan"], a:1, d:"sedang"},
+  {q:"Jika salah satu sudut segitiga 90°, maka segitiga tersebut ...", o:["Sama sisi","Siku-siku","Sama kaki","Tumpul"], a:1, d:"sedang"},
+  {q:"Sudut sepihak pada garis sejajar jumlahnya ...", o:["90°","180°","270°","360°"], a:1, d:"sedang"},
+  {q:"Jika sudut berhadapan 40°, maka sudut berhadapan lainnya = ...", o:["40°","50°","140°","180°"], a:0, d:"sedang"},
+  {q:"Dua garis sejajar dipotong transversal. Sudut sehadap besarnya ...", o:["Sama","Berbeda","Jumlah 180°","Jumlah 90°"], a:0, d:"sedang"},
+  {q:"Jika dua sudut berpelurus dan salah satunya 110°, yang lain = ...", o:["70°","80°","90°","110°"], a:0, d:"sedang"},
+  {q:"Dalam segitiga, jika dua sudut sama 50°, maka sudut ketiga = ...", o:["50°","80°","100°","130°"], a:1, d:"sulit"},
+  {q:"Sudut A dan B sehadap. Jika A = 75°, maka B = ...", o:["75°","105°","15°","180°"], a:0, d:"sulit"},
+  {q:"Jika sudut penyiku dari 35° adalah ...", o:["55°","65°","145°","35°"], a:0, d:"sulit"},
+  {q:"Dua garis berpotongan membentuk 4 sudut. Sudut berhadapan selalu ...", o:["Sama","Jumlah 180°","Jumlah 90°","Berbeda"], a:0, d:"sulit"},
+  {q:"Jika jumlah dua sudut sepihak 180°, maka kedua garis tersebut ...", o:["Berpotongan","Sejajar","Tegak lurus","Berimpit"], a:1, d:"sulit"}
+];
+
+const bankTesKesebangunan = [
+  {q:"Dua bangun yang bentuknya sama disebut ...", o:["Kongruen","Sebangun","Identik","Sama luas"], a:1, d:"mudah"},
+  {q:"Simbol kesebangunan adalah ...", o:["=","∼","≈","≠"], a:1, d:"mudah"},
+  {q:"Syarat utama kesebangunan adalah ...", o:["Luas sama","Sudut sama & sisi proporsional","Volume sama","Keliling sama"], a:1, d:"mudah"},
+  {q:"Skala 1 : 20 berarti 1 cm gambar = ... cm asli", o:["1","2","20","200"], a:2, d:"mudah"},
+  {q:"Jika ΔABC ∼ ΔPQR maka sudut A = sudut ...", o:["P","Q","R","B"], a:0, d:"mudah"},
+  {q:"Skala 1 : 50, panjang gambar 4 cm. Panjang sebenarnya ...", o:["20 cm","200 cm","50 cm","4 cm"], a:1, d:"sedang"},
+  {q:"Jika dua sudut segitiga sama dengan dua sudut segitiga lain, maka ...", o:["Sama luas","Sebangun","Kongruen","Sama sisi"], a:1, d:"sedang"},
+  {q:"Sisi yang berhadapan dengan sudut yang sama disebut sisi ...", o:["Miring","Bersesuaian","Sejajar","Tegak"], a:1, d:"sedang"},
+  {q:"Skala 1 : 100, jarak sebenarnya 500 cm. Jarak pada peta ...", o:["5 cm","50 cm","0,5 cm","500 cm"], a:0, d:"sedang"},
+  {q:"Segitiga dengan sudut 40°, 60°, 80° sebangun dengan segitiga yang sudutnya ...", o:["40°, 50°, 90°","40°, 60°, 80°","30°, 60°, 90°","45°, 45°, 90°"], a:1, d:"sedang"},
+  {q:"Jika AB/DE = BC/EF = AC/DF maka ΔABC dan ΔDEF ...", o:["Sama","Sebangun","Kongruen","Tidak berhubungan"], a:1, d:"sedang"},
+  {q:"Skala 1 : 25, lebar gambar 2 cm. Lebar sebenarnya ...", o:["25 cm","50 cm","2,5 cm","500 cm"], a:1, d:"sedang"},
+  {q:"Kesebangunan memperhatikan ...", o:["Hanya ukuran","Hanya bentuk","Bentuk dan proporsi","Hanya warna"], a:2, d:"sedang"},
+  {q:"Jika skala 1 : 10 dan panjang asli 30 cm, panjang gambar ...", o:["3 cm","30 cm","300 cm","0,3 cm"], a:0, d:"sedang"},
+  {q:"Perbandingan sisi bersesuaian pada segitiga sebangun disebut ...", o:["Skala","Rasio kesebangunan","Gradien","Selisih"], a:1, d:"sedang"},
+  {q:"Dua segitiga sebangun. Perbandingan sisi 2 : 3. Jika sisi pendek 6 cm, sisi yang bersesuaian ...", o:["4 cm","9 cm","12 cm","3 cm"], a:1, d:"sulit"},
+  {q:"Skala 1 : 200, jarak peta 3,5 cm. Jarak sebenarnya ...", o:["70 cm","700 cm","7 m","700 m"], a:2, d:"sulit"},
+  {q:"Jika ΔABC ∼ ΔDEF dengan rasio 1 : 2 dan AB = 5, maka DE = ...", o:["2,5","5","10","15"], a:2, d:"sulit"},
+  {q:"Syarat AAA untuk kesebangunan segitiga berarti ...", o:["Ketiga sisi sama","Ketiga sudut sama","Dua sisi & sudut sama","Semua sisi proporsional saja"], a:1, d:"sulit"},
+  {q:"Bangun yang sebangun selalu memiliki ...", o:["Luas sama","Keliling sama","Sudut yang sama","Volume sama"], a:2, d:"sulit"}
+];
+
+const bankTesPenyajianData = [
+  {q:"Diagram yang menunjukkan proporsi adalah ...", o:["Batang","Garis","Lingkaran","Garis & batang"], a:2, d:"mudah"},
+  {q:"Diagram garis cocok untuk data yang menunjukkan ...", o:["Proporsi","Perubahan waktu","Kategori saja","Persentase saja"], a:1, d:"mudah"},
+  {q:"Sudut sektor dihitung dengan rumus (f/n) × ...", o:["100","180","360","90"], a:2, d:"mudah"},
+  {q:"Data paling sering muncul disebut ...", o:["Mean","Median","Modus","Range"], a:2, d:"mudah"},
+  {q:"Diagram batang menampilkan data dengan ...", o:["Titik","Batang","Sektor","Garis lengkung"], a:1, d:"mudah"},
+  {q:"Total data 80, frekuensi 20. Sudut sektor = ...", o:["45°","90°","60°","120°"], a:1, d:"sedang"},
+  {q:"Data yang belum dikelompokkan disebut data ...", o:["Kelompok","Tunggal","Kontinu","Interval"], a:1, d:"sedang"},
+  {q:"Judul dan label sumbu pada diagram berfungsi untuk ...", o:["Hiasan","Memberi kejelasan data","Tidak penting","Hanya formalitas"], a:1, d:"sedang"},
+  {q:"Jika ingin melihat tren naik-turun, gunakan diagram ...", o:["Lingkaran","Batang","Garis","Piktogram"], a:2, d:"sedang"},
+  {q:"Frekuensi 15 dari total 60. Besar sudut = ...", o:["45°","60°","90°","120°"], a:2, d:"sedang"},
+  {q:"Diagram yang paling baik untuk membandingkan banyak kategori adalah ...", o:["Lingkaran","Garis","Batang","Scatter"], a:2, d:"sedang"},
+  {q:"Persentase data = (frekuensi/total) × ...", o:["90","100","180","360"], a:1, d:"sedang"},
+  {q:"Diagram lingkaran 100% mewakili ...", o:["Setengah data","Seluruh data","Sebagian data","Data tertinggi"], a:1, d:"sedang"},
+  {q:"Sumbu X pada diagram batang biasanya berisi ...", o:["Frekuensi","Kategori","Waktu saja","Angka acak"], a:1, d:"sedang"},
+  {q:"Data berkelompok disusun berdasarkan ...", o:["Urutan abjad","Interval kelas","Warna","Ukuran saja"], a:1, d:"sedang"},
+  {q:"Total 50 siswa, 10 memilih olahraga. Sudut sektor olahraga = ...", o:["36°","72°","90°","180°"], a:1, d:"sulit"},
+  {q:"Jika dua kategori memiliki frekuensi sama, sudut sektornya ...", o:["Berbeda","Sama","Nol","Tak terdefinisi"], a:1, d:"sulit"},
+  {q:"Data: 5, 10, 15, 20. Diagram yang cocok untuk menunjukkan kenaikan adalah ...", o:["Lingkaran","Batang","Garis","Pie saja"], a:2, d:"sulit"},
+  {q:"Kekurangan diagram lingkaran adalah ...", o:["Sulit melihat proporsi","Sulit membandingkan banyak kategori kecil","Tidak menarik","Tidak akurat"], a:1, d:"sulit"},
+  {q:"Untuk data waktu (tahun 2020-2025), diagram terbaik adalah ...", o:["Lingkaran","Batang horizontal","Garis","Piktogram"], a:2, d:"sulit"}
+];
+
+const bankTesRelasi = [
+  {q:"Relasi khusus yang memasangkan setiap domain dengan tepat satu kodomain disebut ...", o:["Relasi","Fungsi","Himpunan","Grafik"], a:1, d:"mudah"},
+  {q:"Himpunan asal disebut ...", o:["Range","Kodomain","Domain","Output"], a:2, d:"mudah"},
+  {q:"f(x) = 3x − 1. f(2) = ...", o:["5","6","7","8"], a:0, d:"mudah"},
+  {q:"Jika satu x memiliki dua y, maka ...", o:["Fungsi","Bukan fungsi","Domain","Range"], a:1, d:"mudah"},
+  {q:"Notasi f : A → B berarti domain adalah ...", o:["B","A","Range","Kodomain"], a:1, d:"mudah"},
+  {q:"f(x) = x + 5. f(7) = ...", o:["12","2","35","5"], a:0, d:"sedang"},
+  {q:"Range adalah himpunan ...", o:["Asal","Hasil yang muncul","Semua bilangan real","Kodomain saja"], a:1, d:"sedang"},
+  {q:"Pasangan (1,3), (2,5), (1,7) merupakan ...", o:["Fungsi","Bukan fungsi","Domain","Relasi fungsi"], a:1, d:"sedang"},
+  {q:"Cara menyajikan fungsi antara lain ...", o:["Diagram panah","Rumus","Tabel","Semua benar"], a:3, d:"sedang"},
+  {q:"f(x) = 2x. Jika f(x) = 10 maka x = ...", o:["2","5","10","20"], a:1, d:"sedang"},
+  {q:"Domain dari f(x) = x + 1 dengan x bilangan asli 1-5 adalah ...", o:["{1,2,3,4,5}","{2,3,4,5,6}","{1,2,3}","Semua bilangan"], a:0, d:"sedang"},
+  {q:"f(x) = x². f(−3) = ...", o:["−9","9","6","−6"], a:1, d:"sedang"},
+  {q:"Kodomain adalah ...", o:["Himpunan asal","Himpunan hasil yang mungkin","Hanya range","Input"], a:1, d:"sedang"},
+  {q:"Relasi yang diagram panahnya dari setiap anggota A menuju tepat satu anggota B adalah ...", o:["Bukan fungsi","Fungsi","Relasi biasa","Himpunan"], a:1, d:"sedang"},
+  {q:"Nilai keluaran fungsi disebut ...", o:["Domain","Input","Output","Variabel bebas"], a:2, d:"sedang"},
+  {q:"f(x) = 4x − 3. Jika f(x) = 13 maka x = ...", o:["3","4","5","6"], a:1, d:"sulit"},
+  {q:"Apakah {(1,2),(2,2),(3,2)} fungsi?", o:["Ya","Tidak","Tidak dapat ditentukan","Hanya relasi"], a:0, d:"sulit"},
+  {q:"f(x) = 5 − x. f(8) = ...", o:["−3","3","13","−13"], a:0, d:"sulit"},
+  {q:"Domain harus memiliki pasangan di kodomain sebanyak ...", o:["Nol","Satu atau lebih","Tepat satu (untuk fungsi)","Dua"], a:2, d:"sulit"},
+  {q:"Jika f(a) = b dan f(a) = c dengan b ≠ c, maka f ...", o:["Fungsi","Bukan fungsi","Domain","Range"], a:1, d:"sulit"}
+];
+
+const bankTesGaris = [
+  {q:"Bentuk y = mx + c, m disebut ...", o:["Konstanta","Gradien","Titik potong x","Sumbu"], a:1, d:"mudah"},
+  {q:"Titik potong sumbu-y dari y = 2x + 7 adalah ...", o:["(0,2)","(0,7)","(7,0)","(2,0)"], a:1, d:"mudah"},
+  {q:"Gradien garis horizontal adalah ...", o:["1","0","Tak terdefinisi","−1"], a:1, d:"mudah"},
+  {q:"Rumus gradien dua titik adalah ...", o:["(y₂−y₁)/(x₂−x₁)","(x₂−x₁)/(y₂−y₁)","y/x","x/y"], a:0, d:"mudah"},
+  {q:"Dua garis sejajar memiliki gradien ...", o:["Berbeda","Sama","Saling kali −1","Nol"], a:1, d:"mudah"},
+  {q:"Gradien melalui (2,3) dan (4,7) adalah ...", o:["1","2","3","4"], a:1, d:"sedang"},
+  {q:"Persamaan garis gradien 3 melalui (0,2) adalah ...", o:["y = 3x + 2","y = 2x + 3","y = 3x − 2","y = x + 3"], a:0, d:"sedang"},
+  {q:"Jika m₁ × m₂ = −1 maka garis tersebut ...", o:["Sejajar","Tegak lurus","Berimpit","Berpotongan"], a:1, d:"sedang"},
+  {q:"Garis vertikal memiliki gradien ...", o:["0","1","Tak terdefinisi","−1"], a:2, d:"sedang"},
+  {q:"y = −2x + 5. Gradiennya adalah ...", o:["2","−2","5","−5"], a:1, d:"sedang"},
+  {q:"Titik potong sumbu-x dari y = 2x − 6 adalah ...", o:["(0,−6)","(3,0)","(−3,0)","(6,0)"], a:1, d:"sedang"},
+  {q:"Gradien dari (0,0) ke (5,10) adalah ...", o:["1","2","5","10"], a:1, d:"sedang"},
+  {q:"Persamaan garis melalui (1,2) dengan gradien 4 adalah ...", o:["y − 2 = 4(x − 1)","y − 1 = 4(x − 2)","y = 4x","y = x + 4"], a:0, d:"sedang"},
+  {q:"Garis y = 5 memiliki gradien ...", o:["5","0","1","Tak terdefinisi"], a:1, d:"sedang"},
+  {q:"Dua garis tegak lurus jika hasil kali gradiennya ...", o:["1","0","−1","2"], a:2, d:"sedang"},
+  {q:"Gradien garis melalui (−1,2) dan (3,−6) adalah ...", o:["−2","2","−1","1"], a:0, d:"sulit"},
+  {q:"Persamaan garis yang sejajar dengan y = 3x + 1 dan melalui (0,5) adalah ...", o:["y = 3x + 5","y = 3x + 1","y = 5x + 3","y = −3x + 5"], a:0, d:"sulit"},
+  {q:"Garis tegak lurus dengan y = 2x − 3 memiliki gradien ...", o:["2","−2","1/2","−1/2"], a:3, d:"sulit"},
+  {q:"Titik potong dua garis y = x + 1 dan y = −x + 5 adalah ...", o:["(2,3)","(1,2)","(3,2)","(0,1)"], a:0, d:"sulit"},
+  {q:"Persamaan garis yang melalui (2,3) dan (4,7) adalah ...", o:["y = 2x − 1","y = 2x + 1","y = x + 1","y = 3x − 3"], a:0, d:"sulit"}
+];
+
+const bankTesPemusatan = [
+  {q:"Rata-rata data disebut juga ...", o:["Median","Modus","Mean","Jangkauan"], a:2, d:"mudah"},
+  {q:"Data paling sering muncul disebut ...", o:["Mean","Median","Modus","Kuartil"], a:2, d:"mudah"},
+  {q:"Nilai tengah data terurut disebut ...", o:["Mean","Median","Modus","Range"], a:1, d:"mudah"},
+  {q:"Jangkauan = data terbesar − ...", o:["Mean","Median","Data terkecil","Modus"], a:2, d:"mudah"},
+  {q:"Q2 sama dengan ...", o:["Mean","Modus","Median","Jangkauan"], a:2, d:"mudah"},
+  {q:"Data: 3, 5, 5, 7, 9. Median = ...", o:["3","5","7","9"], a:1, d:"sedang"},
+  {q:"Data: 2, 4, 4, 6, 8, 8, 8. Modus = ...", o:["2","4","6","8"], a:3, d:"sedang"},
+  {q:"Data: 1, 3, 5, 7, 9. Mean = ...", o:["4","5","6","7"], a:1, d:"sedang"},
+  {q:"Jangkauan data 4, 7, 10, 15, 20 adalah ...", o:["16","15","20","4"], a:0, d:"sedang"},
+  {q:"Banyak data 11. Median terletak pada data ke- ...", o:["5","6","7","11"], a:1, d:"sedang"},
+  {q:"Data genap 6 buah. Median adalah rata-rata data ke- ...", o:["2 dan 3","3 dan 4","4 dan 5","1 dan 6"], a:1, d:"sedang"},
+  {q:"Data: 10, 12, 12, 15, 18. Mean = ...", o:["12,4","13,4","14","15"], a:1, d:"sedang"},
+  {q:"Jika semua data ditambah 5, maka mean ...", o:["Tetap","Bertambah 5","Berkurang 5","Menjadi 5"], a:1, d:"sedang"},
+  {q:"Data harus diurutkan dulu untuk mencari ...", o:["Mean","Median","Jumlah","Tidak perlu"], a:1, d:"sedang"},
+  {q:"Jangkauan data 3, 8, 12, 15, 21, 25 adalah ...", o:["22","21","25","18"], a:0, d:"sedang"},
+  {q:"Data: 5, 7, 8, 10, 12, 15. Median = ...", o:["8","9","10","7,5"], a:1, d:"sulit"},
+  {q:"Data: 2, 3, 3, 3, 4, 5, 7. Modus dan median adalah ...", o:["3 dan 3","3 dan 4","4 dan 3","2 dan 3"], a:0, d:"sulit"},
+  {q:"Mean dari 4, 6, 8, 10, 12 adalah ...", o:["8","9","10","7"], a:0, d:"sulit"},
+  {q:"Jika Q1 = 10 dan Q3 = 22, jangkauan interkuartil = ...", o:["12","32","22","10"], a:0, d:"sulit"},
+  {q:"Data: 4, 6, 6, 8, 10, 12. Median = ...", o:["6","7","8","9"], a:1, d:"sulit"}
+];
+
+/* ================= FUNGSI LATIHAN & TES ================= */
+function mulaiLatihan(materi){
+  const data = bankLatihan[materi];
+  const target = "latihan-" + materi;
+  const box = document.getElementById(target);
+  const soal = ambilAcak(data, Math.min(8, data.length));
+  let html = "";
+  soal.forEach((s, i) => {
+    html += `<div class="question"><strong>Soal ${i+1}</strong><p>${s.q}</p>
+      ${s.o.map((op, j) => `<button class="option" onclick="jawabLatihan(this,${j},${s.a})">${String.fromCharCode(65+j)}. ${op}</button>`).join("")}
+      <div class="feedback"></div></div>`;
+  });
+  box.innerHTML = html;
+  box.scrollIntoView({behavior:"smooth"});
+}
+
+function jawabLatihan(btn, pilihan, jawaban){
+  const parent = btn.parentElement;
+  const tombol = parent.querySelectorAll(".option");
+  tombol.forEach(x => x.disabled = true);
+  const feedback = parent.querySelector(".feedback");
+  if(pilihan === jawaban){
+    btn.classList.add("correct");
+    feedback.innerHTML = "✅ Benar!";
+    feedback.style.background = "#dcfce7";
+  } else {
+    btn.classList.add("wrong");
+    tombol[jawaban].classList.add("correct");
+    feedback.innerHTML = "❌ Belum tepat. Jawaban benar ditandai hijau.";
+    feedback.style.background = "#fee2e2";
+  }
+}
+
+let materiTes = "", bankAktif = [], soalTes = [], nomorSoal = 0, jawabanSiswa = [], waktu = 2400, timerInterval = null;
+
+function bukaFormTes(materi, bank){
+  materiTes = materi; bankAktif = bank;
+  document.getElementById("materiForm").textContent = materi;
+  document.getElementById("namaSiswa").value = "";
+  document.getElementById("kelasSiswa").value = "";
+  buka("formTes");
+}
+
+function mulaiTes(){
+  const nama = document.getElementById("namaSiswa").value.trim();
+  const kelas = document.getElementById("kelasSiswa").value;
+  if(!nama){ alert("Silakan masukkan nama lengkap."); return; }
+  if(!kelas){ alert("Silakan pilih kelas."); return; }
+
+  const mudah = ambilAcak(bankAktif.filter(x => x.d === "mudah"), 5);
+  const sedang = ambilAcak(bankAktif.filter(x => x.d === "sedang"), 10);
+  const sulit = ambilAcak(bankAktif.filter(x => x.d === "sulit"), 5);
+  soalTes = acak([...mudah, ...sedang, ...sulit]);
+  nomorSoal = 0; jawabanSiswa = new Array(soalTes.length).fill(null); waktu = 2400;
+
+  document.getElementById("judulTes").textContent = "📝 Tes Kemampuan - " + materiTes;
+  document.getElementById("infoTes").textContent = materiTes + " • 20 soal • 40 menit";
+  buka("halamanTes"); tampilkanSoal(); mulaiTimer();
+}
+
+function mulaiTimer(){
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    waktu--;
+    if(waktu < 0){ waktu = 0; clearInterval(timerInterval); selesaiTes(true); return; }
+    const menit = Math.floor(waktu / 60); const detik = waktu % 60;
+    document.getElementById("timer").textContent = "⏱️ " + String(menit).padStart(2,"0") + ":" + String(detik).padStart(2,"0");
+  }, 1000);
+}
+
+function tampilkanSoal(){
+  const s = soalTes[nomorSoal]; if(!s) return;
+  const container = document.getElementById("soalTesContainer");
+  let html = `<div class="question"><div><span class="badge">Soal ${nomorSoal+1} dari ${soalTes.length}</span><span class="badge">${s.d}</span></div><h3>${s.q}</h3>`;
+  s.o.forEach((op, i) => {
+    const checked = jawabanSiswa[nomorSoal] === i;
+    html += `<button class="option" style="${checked ? "background:#dbeafe;border-color:#2563eb;" : ""}" onclick="pilihJawaban(${i})">${String.fromCharCode(65+i)}. ${op}</button>`;
+  });
+  html += `</div>`;
+  container.innerHTML = html;
+  document.getElementById("progressTes").style.width = ((nomorSoal+1)/soalTes.length*100) + "%";
+}
+
+function pilihJawaban(i){ jawabanSiswa[nomorSoal] = i; tampilkanSoal(); }
+function soalBerikutnya(){ if(nomorSoal < soalTes.length - 1){ nomorSoal++; tampilkanSoal(); } else alert("Ini soal terakhir. Silakan tekan Selesai Tes."); }
+function soalSebelumnya(){ if(nomorSoal > 0){ nomorSoal--; tampilkanSoal(); } }
+
+function selesaiTes(karenaWaktu = false){
+  clearInterval(timerInterval);
+  let benar = 0;
+  soalTes.forEach((s, i) => { if(jawabanSiswa[i] === s.a) benar++; });
+  const salah = soalTes.length - benar; const nilai = benar * 5;
+  const nama = document.getElementById("namaSiswa").value; const kelas = document.getElementById("kelasSiswa").value;
+
+  document.getElementById("hasilIsi").innerHTML = `<div class="success"><h3>🎉 Tes Selesai</h3>
+    <p><strong>Nama:</strong> ${nama}</p><p><strong>Kelas:</strong> ${kelas}</p><p><strong>Materi:</strong> ${materiTes}</p><hr>
+    <h2>Nilai ${nilai}</h2><p>Benar: <strong>${benar}</strong><br>Salah: <strong>${salah}</strong><br>Jumlah soal: <strong>20</strong></p>
+    ${karenaWaktu ? "<p>⏰ Waktu 40 menit telah habis.</p>" : "<p>✅ Tes telah dikumpulkan.</p>"}</div>`;
+  buka("hasilTes");
+
+  if(URL_APPS_SCRIPT && !URL_APPS_SCRIPT.includes("YOUR_SCRIPT_ID")){
+    fetch(URL_APPS_SCRIPT, { method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({nama, kelas, materi: materiTes, benar, salah, nilai}) }).catch(err => console.log(err));
+  }
+}
+
+window.addEventListener("beforeunload", function(e){
+  const tesAktif = !document.getElementById("halamanTes").classList.contains("hidden");
+  if(tesAktif){ e.preventDefault(); e.returnValue = ""; }
+});
+
+buka("home");
+</script>
+</body>
+</html>
